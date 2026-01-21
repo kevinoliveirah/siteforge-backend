@@ -5,7 +5,11 @@ import { PrismaClient } from "@prisma/client";
 import bcryptjs from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { z } from "zod";
+<<<<<<< HEAD
 import { aiService } from "./services/aiservice";
+=======
+import { CodeGenerator } from "./utils/codeGenerator";
+>>>>>>> 7108c186d2fbd730681da9cfbb49bade87c6872c
 
 dotenv.config();
 
@@ -13,6 +17,7 @@ const app: Express = express();
 const prisma = new PrismaClient();
 const port = process.env.PORT || 3000;
 const JWT_SECRET = process.env.JWT_SECRET || "your-secret-key";
+const codeGenerator = new CodeGenerator();
 
 // Middleware
 app.use(cors());
@@ -259,6 +264,7 @@ app.delete(
   }
 );
 
+<<<<<<< HEAD
 
 // Generate site with AI
 app.post(
@@ -347,6 +353,95 @@ app.post(
     }
   }
 );
+=======
+// Generate site code
+app.post("/api/generate-site", authenticate, async (req: any, res: Response) => {
+  try {
+    const projectId = req.body.projectId;
+
+    if (!projectId) {
+      return res.status(400).json({ error: "ID do projeto é obrigatório" });
+    }
+
+    const project = await prisma.project.findUnique({
+      where: { id: projectId },
+    });
+
+    if (!project || project.userId !== req.userId) {
+      return res.status(404).json({ error: "Projeto não encontrado" });
+    }
+
+    // Gerar código do site
+    const generatedCode = await codeGenerator.generateSite(project);
+
+    // Salvar código gerado no banco
+    const updatedProject = await prisma.project.update({
+      where: { id: projectId },
+      data: {
+        generatedHtml: generatedCode.html,
+        generatedCss: generatedCode.css,
+        generatedJs: generatedCode.js,
+        generatedCode: generatedCode.fullCode,
+        status: "generated",
+      },
+    });
+
+    res.json({
+      project: updatedProject,
+      previewUrl: `/api/preview/${projectId}`,
+      downloadUrl: `/api/download/${projectId}`,
+    });
+  } catch (error: any) {
+    console.error("Erro ao gerar site:", error);
+    res.status(500).json({ error: error.message || "Erro ao gerar site" });
+  }
+});
+
+// Get site preview
+app.get("/api/preview/:projectId", authenticate, async (req: any, res: Response) => {
+  try {
+    const project = await prisma.project.findUnique({
+      where: { id: req.params.projectId },
+    });
+
+    if (!project || project.userId !== req.userId) {
+      return res.status(404).json({ error: "Projeto não encontrado" });
+    }
+
+    if (!project.generatedCode) {
+      return res.status(404).json({ error: "Código ainda não foi gerado" });
+    }
+
+    res.setHeader('Content-Type', 'text/html');
+    res.send(project.generatedCode);
+  } catch (error: any) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Download site files
+app.get("/api/download/:projectId", authenticate, async (req: any, res: Response) => {
+  try {
+    const project = await prisma.project.findUnique({
+      where: { id: req.params.projectId },
+    });
+
+    if (!project || project.userId !== req.userId) {
+      return res.status(404).json({ error: "Projeto não encontrado" });
+    }
+
+    if (!project.generatedCode) {
+      return res.status(404).json({ error: "Código ainda não foi gerado" });
+    }
+
+    res.setHeader('Content-Type', 'text/html');
+    res.setHeader('Content-Disposition', `attachment; filename="${project.name.toLowerCase().replace(/\s+/g, '-')}.html"`);
+    res.send(project.generatedCode);
+  } catch (error: any) {
+    res.status(500).json({ error: error.message });
+  }
+});
+>>>>>>> 7108c186d2fbd730681da9cfbb49bade87c6872c
 
 // Start server
 app.listen(port, () => {

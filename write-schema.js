@@ -1,4 +1,5 @@
-// This is your Prisma schema file,
+const fs = require('fs');
+const content = `// This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
@@ -6,8 +7,8 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = "file:./dev.db"
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model User {
@@ -34,26 +35,12 @@ model Project {
   database      String?
   language      String?
   primaryColor  String?
-<<<<<<< HEAD
   status        String   @default("draft")
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
   generatedCode String?  @db.Text
   userId        String
   user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-}
-=======
-  subdomain     String?
-  status        String   @default("draft")
-  generatedCode String?
-  generatedHtml String?
-  generatedCss  String?
-  generatedJs   String?
-  generatedAssets String?
-  deployedUrl   String?
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
-  userId        String
-  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-}
->>>>>>> 7108c186d2fbd730681da9cfbb49bade87c6872c
+}`;
+fs.writeFileSync('prisma/schema.prisma', content, 'utf8');
+console.log('✅ schema.prisma written successfully');

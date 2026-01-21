@@ -1,0 +1,13 @@
+﻿Environment variables loaded from .env
+prisma                  : 6.2.1
+@prisma/client          : 6.2.1
+Computed binaryTarget   : windows
+Operating System        : win32
+Architecture            : x64
+Node.js                 : v24.12.0
+TypeScript              : 5.4.5
+Query Engine (Node-API) : libquery-engine 4123509d24aa4dede1e864b46351bf2790323b69 (at node_modules\@prisma\engines\query_engine-windows.dll.node)
+Schema Engine           : schema-engine-cli 4123509d24aa4dede1e864b46351bf2790323b69 (at node_modules\@prisma\engines\schema-engine-windows.exe)
+Schema Wasm             : @prisma/prisma-schema-wasm 6.2.0-14.4123509d24aa4dede1e864b46351bf2790323b69
+Default Engines Hash    : 4123509d24aa4dede1e864b46351bf2790323b69
+Studio                  : 0.503.0

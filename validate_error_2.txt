@@ -1,0 +1,69 @@
+﻿Environment variables loaded from .env
+Prisma schema loaded from prisma\schema.prisma
+node.exe : 
+No linha:1 caractere:1
++ & "C:\Program 
+Files\nodejs/node.exe" 
+"C:\Program 
+Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~
+    + CategoryInfo         
+     : NotSpecified: (:St  
+  ring) [], RemoteExcept   
+ ion
+    + FullyQualifiedErrorI 
+   d : NativeCommandError
+ 
+Error: Prisma schema 
+validation - (validate 
+wasm)
+Error code: P1012
+[1;91merror[0m: 
+[1mError parsing 
+attribute "@default": 
+Expected a String value, 
+but found `draft`.[0m
+  [1;94m-->[0m  [4mprism
+a\schema.prisma:34[0m
+[1;94m   | [0m
+[1;94m33 | [0m  
+primaryColor  String?
+[1;94m34 | [0m  status   
+     String   
+[1;91m@default(draft)[0m
+[1;94m   | [0m
+[1;91merror[0m: 
+[1mExpected a String 
+value, but received 
+literal value 
+`prisma-client-js`.[0m
+  [1;94m-->[0m  [4mprism
+a\schema.prisma:2[0m
+[1;94m   | [0m
+[1;94m 1 | [0mgenerator 
+client {
+[1;94m 2 | [0m  provider 
+= 
+[1;91mprisma-client-js[0m
+[1;94m   | [0m
+[1;91merror[0m: 
+[1mError validating 
+datasource `db`: The 
+provider argument in a 
+datasource must be a 
+string literal[0m
+  [1;94m-->[0m  [4mprism
+a\schema.prisma:6[0m
+[1;94m   | [0m
+[1;94m 5 | [0mdatasource 
+db {
+[1;94m 6 | [0m  provider 
+= [1;91mpostgresql[0m
+[1;94m   | [0m
+
+Validation Error Count: 3
+[Context: validate]
+
+Prisma CLI Version : 5.22.0

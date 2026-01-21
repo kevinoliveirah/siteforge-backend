@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{project.name}}</title>
+    <style>
+        {{css}}
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <h1>{{project.name}}</h1>
+            </div>
+            <nav class="nav">
+                <a href="#home">Home</a>
+                <a href="#posts">Posts</a>
+                <a href="#about">Sobre</a>
+                <a href="#contact">Contato</a>
+                <button class="btn-primary">Inscrever-se</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>{{project.objective}}</h1>
+            <p>{{project.description}}</p>
+            <div class="hero-actions">
+                <button class="btn-primary">Ver Posts Recentes</button>
+                <button class="btn-secondary">Sobre Nós</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Posts -->
+    <section class="featured-posts">
+        <div class="container">
+            <h2>Posts em Destaque</h2>
+            <div class="posts-grid">
+                <article class="post-card featured">
+                    <div class="post-image">
+                        <img src="https://via.placeholder.com/600x400/00D4FF/ffffff?text=Post+Destaque" alt="Post em destaque">
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span class="category">Tecnologia</span>
+                            <span class="date">15 Jan 2024</span>
+                        </div>
+                        <h3>O Futuro da Tecnologia Web</h3>
+                        <p>Descubra as tendências que vão moldar o desenvolvimento web nos próximos anos...</p>
+                        <a href="#" class="read-more">Ler mais →</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recent Posts -->
+    <section id="posts" class="recent-posts">
+        <div class="container">
+            <h2>Posts Recentes</h2>
+            <div class="posts-grid">
+                <article class="post-card">
+                    <div class="post-image">
+                        <img src="https://via.placeholder.com/400x250/4F46E5/ffffff?text=Post+1" alt="Post 1">
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span class="category">Design</span>
+                            <span class="date">12 Jan 2024</span>
+                        </div>
+                        <h3>Design Systems: O que são e por que usar</h3>
+                        <p>Aprenda sobre design systems e como eles podem melhorar sua produtividade...</p>
+                        <a href="#" class="read-more">Ler mais →</a>
+                    </div>
+                </article>
+
+                <article class="post-card">
+                    <div class="post-image">
+                        <img src="https://via.placeholder.com/400x250/EC4899/ffffff?text=Post+2" alt="Post 2">
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span class="category">Desenvolvimento</span>
+                            <span class="date">10 Jan 2024</span>
+                        </div>
+                        <h3>React 18: Novas funcionalidades</h3>
+                        <p>Explore as novas features do React 18 e como elas impactam seus projetos...</p>
+                        <a href="#" class="read-more">Ler mais →</a>
+                    </div>
+                </article>
+
+                <article class="post-card">
+                    <div class="post-image">
+                        <img src="https://via.placeholder.com/400x250/10B981/ffffff?text=Post+3" alt="Post 3">
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span class="category">Ferramentas</span>
+                            <span class="date">8 Jan 2024</span>
+                        </div>
+                        <h3>Melhores IDEs para desenvolvimento web</h3>
+                        <p>Uma análise comparativa das melhores ferramentas para programadores...</p>
+                        <a href="#" class="read-more">Ler mais →</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://via.placeholder.com/400x400/F59E0B/ffffff?text=Sobre+Nós" alt="Sobre nós">
+                </div>
+                <div class="about-text">
+                    <h2>Sobre {{project.name}}</h2>
+                    <p>{{project.objective}}</p>
+                    <p>Compartilhamos conhecimento, experiências e insights sobre {{project.audience}}.</p>
+                    <p>Nosso objetivo é ajudar profissionais e entusiastas a se manterem atualizados com as últimas tendências e melhores práticas do mercado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Não perca nenhum post!</h2>
+                <p>Inscreva-se para receber as novidades diretamente no seu email</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Seu melhor email" required>
+                    <button type="submit" class="btn-primary">Inscrever-se</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>{{project.name}}</h3>
+                    <p>{{project.description}}</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">📘 Facebook</a>
+                        <a href="#" class="social-link">🐦 Twitter</a>
+                        <a href="#" class="social-link">📷 Instagram</a>
+                        <a href="#" class="social-link">💼 LinkedIn</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Categorias</h4>
+                    <a href="#">Tecnologia</a>
+                    <a href="#">Design</a>
+                    <a href="#">Desenvolvimento</a>
+                    <a href="#">Ferramentas</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Links Úteis</h4>
+                    <a href="#about">Sobre</a>
+                    <a href="#contact">Contato</a>
+                    <a href="#">Política de Privacidade</a>
+                    <a href="#">Termos de Uso</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 {{project.name}}. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        {{js}}
+    </script>
+</body>
+</html>
