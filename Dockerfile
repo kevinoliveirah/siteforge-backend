@@ -9,7 +9,7 @@ RUN apk add --no-cache openssl
 # Copy package files
 COPY package*.json ./
 
-# Install ALL dependencies (including dev for build)
+# Install ALL dependencies
 RUN npm install
 
 # Copy prisma schema
@@ -21,11 +21,8 @@ RUN npx prisma generate
 # Copy source code
 COPY . .
 
-# Build TypeScript
-RUN npm run build
-
 # Expose port
 EXPOSE 3000
 
-# Start production server
-CMD ["npm", "run", "start"]
+# Start server using tsx (no build needed)
+CMD ["npx", "tsx", "src/index.ts"]
