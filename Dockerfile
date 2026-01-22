@@ -9,8 +9,8 @@ RUN apk add --no-cache openssl
 # Copy package files
 COPY package*.json ./
 
-# Install dependencies
-RUN npm ci --only=production
+# Install ALL dependencies (including dev for build)
+RUN npm install
 
 # Copy prisma schema
 COPY prisma ./prisma/
